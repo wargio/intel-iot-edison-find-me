@@ -3,6 +3,7 @@ DATA=$(. ./get_wifi.sh  | grep -E "$1|$2|$3")
 MAC=""
 FRQ=""
 i=0
+./lcd "#intelMaker" "Math work"
 for D in $DATA
 do
   k=$((i%3))

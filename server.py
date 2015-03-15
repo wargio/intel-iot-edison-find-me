@@ -48,7 +48,9 @@ class Worker(threading.Thread):
       out, err = p.communicate()
       if out == "1\n":
          subprocess.Popen("./server.sh")
-         print("updating coords!")
+         f = open('./coord.txt', 'r')
+         print("updating coords!" + f.read())
+         f.close()
 
 class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 

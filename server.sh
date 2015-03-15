@@ -3,7 +3,12 @@
 NOW=$(date +%s)
 COO=$(stat coord.txt -c %X)
 SUB=$((NOW-COO))
-if [ "$SUB" -gt "60" ]; then
+MAX=8
+
+
+if [ "$SUB" -gt "$MAX" ]; then
   rm -rf coord.txt
   . ./get_coord.sh >> coord.txt
+else
+  ./lcd "#intelMaker" "wait "$((MAX-SUB))
 fi

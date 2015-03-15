@@ -3,7 +3,8 @@ i=0
 MAC=""
 FREQ=""
 DB=""
-  iwlist wlan0 scan | grep -E "Address|Signal|Frequency" >> tmp.txt
+./lcd "#intelMaker" "Scanning WiFi"
+iwlist wlan0 scan | grep -E "Address|Signal|Frequency" >> tmp.txt
 while read line;
 do
     k=$((i%3))

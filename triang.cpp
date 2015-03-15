@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 	y = ((b*b - a*a) / (2 * (by - ay))) - ((bx*bx - ax*ax) / (2 * (by - ay))) - ((by + ay) / 2) - x*((bx - ax) / (by - ay));
 */
 	bellaRoba(ax, ay, a, bx, by, b, cx, cy, c, &x, &y);
-	printf("%f %f\n", x, y);
+	printf("%.2f %.2f\n", x, y);
 	return 0;
 }
 

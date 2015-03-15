@@ -7,6 +7,6 @@ all:
 	cp button-src/button-src button
 
 clean:
-	rm triang suDai lcd button
+	rm -rf triang suDai lcd button
 	make clean -C lcd-src
 	make clean -C button-src
