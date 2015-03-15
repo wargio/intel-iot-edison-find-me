@@ -1,0 +1,40 @@
+#!/bin/sh
+MASTER_MAC0="E8:FC:AF:A6:0C:F2";
+COORDX_MAC0="3.063458";
+COORDY_MAC0="3.936612";
+COORDD_MAC0="";
+
+MASTER_MAC1="30:46:9A:1E:77:50";
+COORDX_MAC1="0.385666";
+COORDY_MAC1="7.854574";
+COORDD_MAC1="";
+
+MASTER_MAC2="00:22:6B:F6:79:AF";
+COORDX_MAC2="12.209893";
+COORDY_MAC2="13.936612";
+COORDD_MAC2="";
+
+
+DIST=$(. ./find.sh "$MASTER_MAC0" "$MASTER_MAC1" "$MASTER_MAC2")
+i=0
+CURMAC=""
+
+for D in $DIST
+do
+  k=$((i%2))
+  if [ "$k" -eq "0" ]; then
+    CURMAC="$D"
+  else
+    if [ "$CURMAC" == "$MASTER_MAC0" ]; then
+	COORDD_MAC0=$D;
+    elif [ "$CURMAC" == "$MASTER_MAC1" ]; then
+	COORDD_MAC1=$D;
+    else
+	COORDD_MAC2=$D;
+    fi
+  fi
+  i=$((i+1)) 
+done
+OUT=$(./triang "$COORDX_MAC0" "$COORDY_MAC0" "$COORDD_MAC0" "$COORDX_MAC1" "$COORDY_MAC1" "$COORDD_MAC1" "$COORDX_MAC2" "$COORDY_MAC2" "$COORDD_MAC2")
+echo $OUT
+./lcd $OUT
